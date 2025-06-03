@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maîtrise de l'Argent - Guide Complet</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -17,13 +14,13 @@
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
             color: #333;
         }
-        
+
         .hero-section {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -31,7 +28,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-section::before {
             content: "";
             position: absolute;
@@ -43,12 +40,12 @@
             opacity: 0.2;
             z-index: 0;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 1;
         }
-        
+
         .step-card {
             transition: all 0.3s ease;
             border-radius: 10px;
@@ -57,80 +54,88 @@
             margin-bottom: 20px;
             border: none;
         }
-        
+
         .step-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        
+
         .step-header {
             padding: 1.5rem;
             color: white;
             font-weight: bold;
         }
-        
+
         .step-1 { background-color: #3498db; }
         .step-2 { background-color: #2ecc71; }
         .step-3 { background-color: #e74c3c; }
         .step-4 { background-color: #9b59b6; }
         .step-5 { background-color: #f39c12; }
-        
+
         .principle-card {
             border-left: 4px solid var(--secondary-color);
             transition: all 0.3s ease;
         }
-        
+
         .principle-card:hover {
             background-color: rgba(52, 152, 219, 0.1);
         }
-        
+
         .simulation-container {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             padding: 2rem;
         }
-        
+
         .tab-content {
             padding: 20px;
             background-color: white;
             border-radius: 0 0 10px 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         .nav-tabs .nav-link.active {
             font-weight: bold;
             color: var(--secondary-color);
             border-bottom: 3px solid var(--secondary-color);
         }
-        
+
         .nav-tabs .nav-link {
             color: var(--dark-color);
         }
-        
+
         .progress {
-            height: 10px;
+            height: 25px; /* Increased height for better visibility */
             margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
         }
-        
+
         .progress-bar {
             background-color: var(--secondary-color);
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.5s ease-in-out;
         }
-        
+
         .tooltip-inner {
             max-width: 300px;
             padding: 10px;
         }
-        
+
         .interactive-element {
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .interactive-element:hover {
             color: var(--secondary-color);
         }
-        
+
         .floating-btn {
             position: fixed;
             bottom: 30px;
@@ -149,41 +154,78 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .floating-btn:hover {
             transform: scale(1.1);
         }
-        
+
         .glossary-term {
             border-bottom: 1px dashed #999;
             cursor: help;
         }
-        
+
         .modal-content {
             border-radius: 15px;
             overflow: hidden;
         }
-        
+
         .checklist-item {
             margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
         }
-        
+
+        .checklist-item input[type="checkbox"] {
+            min-width: 20px; /* Ensure checkbox is visible */
+            min-height: 20px;
+            margin-top: 0.25rem; /* Align with label text */
+            margin-right: 0.75rem;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            flex-grow: 1;
+            cursor: pointer;
+            padding-top: 2px; /* Fine-tune vertical alignment */
+        }
+
         .checklist-item input:checked + label {
             text-decoration: line-through;
             color: #999;
         }
-        
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
         }
-        
+
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .accordion-button {
+            font-weight: bold;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+        .accordion-item {
+            border: 1px solid var(--light-color);
+            margin-bottom: 10px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: var(--light-color);
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 3rem 0;
@@ -192,7 +234,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -223,7 +264,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container hero-content text-center">
             <h1 class="display-4 fw-bold mb-4">Les 5 Étapes pour Maîtriser l'Argent</h1>
@@ -235,7 +275,6 @@
         </div>
     </section>
 
-    <!-- Introduction -->
     <section class="py-5 bg-light">
         <div class="container animate-on-scroll">
             <div class="row justify-content-center">
@@ -248,13 +287,11 @@
         </div>
     </section>
 
-    <!-- Les 5 Étapes -->
     <section id="etapes" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5 animate-on-scroll"><i class="fas fa-layer-group text-primary me-2"></i> Les 5 Étapes Clés</h2>
-            
+
             <div class="row g-4">
-                <!-- Étape 1 -->
                 <div class="col-md-6 col-lg-4 animate-on-scroll">
                     <div class="step-card h-100">
                         <div class="step-header step-1">
@@ -264,22 +301,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Objectif</h5>
                             <p class="card-text">Générer des revenus à partir de votre savoir-faire.</p>
-                            
+
                             <h5 class="card-title mt-4">Principes clés</h5>
                             <ul class="list-unstyled">
                                 <li><i class="fas fa-check-circle text-success me-2"></i> L'argent suit la valeur</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> L'apprentissage continu augmente vos opportunités</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Diversifier les sources protège contre l'imprévu</li>
                             </ul>
-                            
+
                             <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#etape1Modal">
                                 Voir les bonnes pratiques
                             </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Étape 2 -->
+
                 <div class="col-md-6 col-lg-4 animate-on-scroll">
                     <div class="step-card h-100">
                         <div class="step-header step-2">
@@ -289,22 +325,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Objectif</h5>
                             <p class="card-text">Organiser ses flux financiers pour en garder le contrôle.</p>
-                            
+
                             <h5 class="card-title mt-4">Principes clés</h5>
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-check-circle text-success me-2"></i> Chaque euro doit avoir une mission</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Chaque CFA doit avoir une mission</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Ce qu'on ne mesure pas, on ne maîtrise pas</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Le cash-flow est plus important que le revenu</li>
                             </ul>
-                            
+
                             <button class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#etape2Modal">
                                 Voir les bonnes pratiques
                             </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Étape 3 -->
+
                 <div class="col-md-6 col-lg-4 animate-on-scroll">
                     <div class="step-card h-100">
                         <div class="step-header step-3">
@@ -314,22 +349,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Objectif</h5>
                             <p class="card-text">Construire une base stable pour faire face aux imprévus.</p>
-                            
+
                             <h5 class="card-title mt-4">Principes clés</h5>
                             <ul class="list-unstyled">
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Ce que vous ne protégez pas peut vous être enlevé</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> L'épargne est la première assurance</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> La résilience commence par l'anticipation</li>
                             </ul>
-                            
+
                             <button class="btn btn-outline-danger mt-3" data-bs-toggle="modal" data-bs-target="#etape3Modal">
                                 Voir les bonnes pratiques
                             </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Étape 4 -->
+
                 <div class="col-md-6 col-lg-6 animate-on-scroll">
                     <div class="step-card h-100">
                         <div class="step-header step-4">
@@ -339,22 +373,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Objectif</h5>
                             <p class="card-text">Faire croître son argent sans effort direct.</p>
-                            
+
                             <h5 class="card-title mt-4">Principes clés</h5>
                             <ul class="list-unstyled">
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Ne placez jamais ce que vous ne comprenez pas</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Le temps est le meilleur allié de l'investisseur</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> Les petits montants réguliers battent les gros coups isolés</li>
                             </ul>
-                            
+
                             <button class="btn btn-outline-purple mt-3" data-bs-toggle="modal" data-bs-target="#etape4Modal">
                                 Voir les bonnes pratiques
                             </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Étape 5 -->
+
                 <div class="col-md-6 col-lg-6 animate-on-scroll">
                     <div class="step-card h-100">
                         <div class="step-header step-5">
@@ -364,14 +397,14 @@
                         <div class="card-body">
                             <h5 class="card-title">Objectif</h5>
                             <p class="card-text">Donner du sens à sa réussite financière.</p>
-                            
+
                             <h5 class="card-title mt-4">Principes clés</h5>
                             <ul class="list-unstyled">
                                 <li><i class="fas fa-check-circle text-success me-2"></i> La richesse devient liberté quand elle est transmise</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> L'héritage le plus précieux est la conscience financière</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i> L'impact social donne une finalité à l'enrichissement</li>
                             </ul>
-                            
+
                             <button class="btn btn-outline-warning mt-3" data-bs-toggle="modal" data-bs-target="#etape5Modal">
                                 Voir les bonnes pratiques
                             </button>
@@ -382,11 +415,10 @@
         </div>
     </section>
 
-    <!-- Tableau Synoptique -->
     <section class="py-5 bg-light">
         <div class="container animate-on-scroll">
             <h2 class="text-center mb-5"><i class="fas fa-table text-primary me-2"></i> Vue Synoptique des 5 Étapes</h2>
-            
+
             <div class="table-responsive">
                 <table class="table table-hover table-bordered">
                     <thead class="table-dark">
@@ -434,8 +466,7 @@
         </div>
     </section>
 
-    <!-- 40 Principes -->
-   <section id="principes" class="py-5">
+    <section id="principes" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5 animate-on-scroll"><i class="fas fa-list-ol text-primary me-2"></i> Les 40 Principes et Bonnes Pratiques</h2>
 
@@ -742,103 +773,417 @@
     </div>
 </section>
 
-    <!-- Simulations Interactives -->
     <section id="simulations" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 animate-on-scroll"><i class="fas fa-calculator text-primary me-2"></i> Simulations Interactives</h2>
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="simulation-container animate-on-scroll">
-                        <ul class="nav nav-tabs mb-4" id="simulationTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="interets-tab" data-bs-toggle="tab" data-bs-target="#interets" type="button">Intérêts Composés</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="fonds-tab" data-bs-toggle="tab" data-bs-target="#fonds" type="button">Fonds d'Urgence</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button">Budget 50/30/20</button>
-                            </li>
-                        </ul>
-                        
-                        <div class="tab-content" id="simulationTabContent">
-                            <div class="tab-pane fade show active" id="interets" role="tabpanel">
-                                <h4>Simulateur d'Intérêts Composés</h4>
-                                <p>Visualisez comment de petits investissements réguliers peuvent croître avec le temps.</p>
-                                
-                                <div class="mb-3">
-                                    <label for="montantInitial" class="form-label">Montant initial (€)</label>
-                                    <input type="range" class="form-range" min="0" max="10000" step="100" id="montantInitial" value="1000">
-                                    <div class="d-flex justify-content-between">
-                                        <span>0€</span>
-                                        <span id="montantInitialValue">1000€</span>
-                                        <span>10,000€</span>
+    <div class="container">
+        <h2 class="text-center mb-5 animate-on-scroll"><i class="fas fa-calculator text-primary me-2"></i> Simulations
+            Interactives</h2>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="simulation-container animate-on-scroll">
+                    <ul class="nav nav-tabs mb-4" id="simulationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="terrains-tab" data-bs-toggle="tab"
+                                data-bs-target="#terrains" type="button" role="tab" aria-controls="terrains"
+                                aria-selected="true">Achat et revente de terrains sur 5 ans</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="fonds-tab" data-bs-toggle="tab" data-bs-target="#fonds"
+                                type="button" role="tab" aria-controls="fonds" aria-selected="false">Fonds
+                                d'Urgence</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget"
+                                type="button" role="tab" aria-controls="budget" aria-selected="false">Budget
+                                50/30/20</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit"
+                                type="button" role="tab" aria-controls="credit" aria-selected="false">Remboursement
+                                Crédit</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="retraite-tab" data-bs-toggle="tab" data-bs-target="#retraite"
+                                type="button" role="tab" aria-controls="retraite" aria-selected="false">Plan
+                                Retraite</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="inflation-tab" data-bs-toggle="tab" data-bs-target="#inflation"
+                                type="button" role="tab" aria-controls="inflation" aria-selected="false">Impact
+                                Inflation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="epargne-tab" data-bs-toggle="tab" data-bs-target="#epargne"
+                                type="button" role="tab" aria-controls="epargne" aria-selected="false">Objectif
+                                Épargne</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="simulationTabContent">
+                        <div class="tab-pane fade show active" id="terrains" role="tabpanel"
+                            aria-labelledby="terrains-tab">
+                            <h4>Simulateur d'Achat et revente de terrains sur 5 ans</h4>
+                            <p>Estimez les gains potentiels d'un investissement dans l'achat et la revente de terrains sur une période de 5 ans.</p>
+
+                            <div class="mb-3">
+                                <label for="prixAchatTerrain" class="form-label">Prix d'achat du terrain (CFA)</label>
+                                <input type="range" class="form-range" min="1000000" max="100000000" step="1000000"
+                                    id="prixAchatTerrain" value="10000000">
+                                <div class="d-flex justify-content-between">
+                                    <span>1,000,000 CFA</span>
+                                    <span id="prixAchatTerrainValue">10,000,000 CFA</span>
+                                    <span>100,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="prixReventeTerrain" class="form-label">Prix de revente estimé du terrain (CFA)</label>
+                                <input type="range" class="form-range" min="1000000" max="200000000" step="1000000"
+                                    id="prixReventeTerrain" value="15000000">
+                                <div class="d-flex justify-content-between">
+                                    <span>1,000,000 CFA</span>
+                                    <span id="prixReventeTerrainValue">15,000,000 CFA</span>
+                                    <span>200,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fraisTransaction" class="form-label">Frais de transaction (%)</label>
+                                <input type="range" class="form-range" min="1" max="10" step="0.5"
+                                    id="fraisTransaction" value="5">
+                                <div class="d-flex justify-content-between">
+                                    <span>1%</span>
+                                    <span id="fraisTransactionValue">5%</span>
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerTerrains" class="btn btn-primary">Calculer le Gain</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatTerrains">Entrez les paramètres et cliquez sur "Calculer"
+                                        </div>
+                                        <div id="graphiqueTerrains" class="mt-3" style="height: 300px;"></div>
                                     </div>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="apportMensuel" class="form-label">Apport mensuel (€)</label>
-                                    <input type="range" class="form-range" min="0" max="2000" step="50" id="apportMensuel" value="200">
-                                    <div class="d-flex justify-content-between">
-                                        <span>0€</span>
-                                        <span id="apportMensuelValue">200€</span>
-                                        <span>2,000€</span>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="fonds" role="tabpanel" aria-labelledby="fonds-tab">
+                            <h4>Simulateur de Fonds d'Urgence</h4>
+                            <p>Déterminez le montant idéal pour votre fonds d'urgence et le temps nécessaire pour
+                                l'atteindre.</p>
+
+                            <div class="mb-3">
+                                <label for="depensesMensuelles" class="form-label">Dépenses mensuelles (CFA)</label>
+                                <input type="range" class="form-range" min="100000" max="1000000" step="10000"
+                                    id="depensesMensuelles" value="300000">
+                                <div class="d-flex justify-content-between">
+                                    <span>100,000 CFA</span>
+                                    <span id="depensesMensuellesValue">300,000 CFA</span>
+                                    <span>1,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="moisCouverture" class="form-label">Mois de couverture souhaités</label>
+                                <input type="range" class="form-range" min="1" max="12" step="1" id="moisCouverture"
+                                    value="6">
+                                <div class="d-flex justify-content-between">
+                                    <span>1 mois</span>
+                                    <span id="moisCouvertureValue">6 mois</span>
+                                    <span>12 mois</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="epargneMensuelleFonds" class="form-label">Épargne mensuelle pour le fonds
+                                    (CFA)</label>
+                                <input type="range" class="form-range" min="10000" max="200000" step="10000"
+                                    id="epargneMensuelleFonds" value="50000">
+                                <div class="d-flex justify-content-between">
+                                    <span>10,000 CFA</span>
+                                    <span id="epargneMensuelleFondsValue">50,000 CFA</span>
+                                    <span>200,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerFonds" class="btn btn-primary">Calculer</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatFonds">Entrez les paramètres et cliquez sur "Calculer"</div>
                                     </div>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="tauxRendement" class="form-label">Taux de rendement annuel (%)</label>
-                                    <input type="range" class="form-range" min="1" max="15" step="0.5" id="tauxRendement" value="7">
-                                    <div class="d-flex justify-content-between">
-                                        <span>1%</span>
-                                        <span id="tauxRendementValue">7%</span>
-                                        <span>15%</span>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="budget" role="tabpanel" aria-labelledby="budget-tab">
+                            <h4>Simulateur de Budget 50/30/20</h4>
+                            <p>Allouez votre revenu en 50% pour les besoins, 30% pour les envies et 20% pour
+                                l'épargne/remboursement de dettes.</p>
+
+                            <div class="mb-3">
+                                <label for="revenuMensuel" class="form-label">Revenu mensuel net (CFA)</label>
+                                <input type="range" class="form-range" min="200000" max="2000000" step="10000"
+                                    id="revenuMensuel" value="500000">
+                                <div class="d-flex justify-content-between">
+                                    <span>200,000 CFA</span>
+                                    <span id="revenuMensuelValue">500,000 CFA</span>
+                                    <span>2,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerBudget" class="btn btn-primary">Calculer</button>
+
+                            <div class="mt-4">
+                                <h5>Répartition de votre budget</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatBudget">Entrez votre revenu et cliquez sur "Calculer"</div>
+                                        <div id="graphiqueBudget" class="mt-3" style="height: 300px;"></div>
                                     </div>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="dureeInvestissement" class="form-label">Durée (années)</label>
-                                    <input type="range" class="form-range" min="1" max="40" step="1" id="dureeInvestissement" value="20">
-                                    <div class="d-flex justify-content-between">
-                                        <span>1 an</span>
-                                        <span id="dureeInvestissementValue">20 ans</span>
-                                        <span>40 ans</span>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+                            <h4>Simulateur de Remboursement de Crédit</h4>
+                            <p>Calculez vos mensualités ou la durée de remboursement d'un crédit.</p>
+
+                            <div class="mb-3">
+                                <label for="montantCredit" class="form-label">Montant du crédit (CFA)</label>
+                                <input type="range" class="form-range" min="1000000" max="100000000" step="1000000"
+                                    id="montantCredit" value="30000000">
+                                <div class="d-flex justify-content-between">
+                                    <span>1,000,000 CFA</span>
+                                    <span id="montantCreditValue">30,000,000 CFA</span>
+                                    <span>100,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tauxInteretCredit" class="form-label">Taux d'intérêt annuel (%)</label>
+                                <input type="range" class="form-range" min="0.5" max="10" step="0.1"
+                                    id="tauxInteretCredit" value="3.5">
+                                <div class="d-flex justify-content-between">
+                                    <span>0.5%</span>
+                                    <span id="tauxInteretCreditValue">3.5%</span>
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dureeCredit" class="form-label">Durée du crédit (années)</label>
+                                <input type="range" class="form-range" min="1" max="30" step="1" id="dureeCredit"
+                                    value="20">
+                                <div class="d-flex justify-content-between">
+                                    <span>1 an</span>
+                                    <span id="dureeCreditValue">20 ans</span>
+                                    <span>30 ans</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerCredit" class="btn btn-primary">Calculer Mensualité</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat du Crédit</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatCredit">Entrez les paramètres et cliquez sur "Calculer"</div>
                                     </div>
                                 </div>
-                                
-                                <button id="calculerInterets" class="btn btn-primary">Calculer</button>
-                                
-                                <div class="mt-4">
-                                    <h5>Résultat</h5>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div id="resultatInterets">Entrez les paramètres et cliquez sur "Calculer"</div>
-                                            <div id="graphiqueInterets" class="mt-3" style="height: 300px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="retraite" role="tabpanel" aria-labelledby="retraite-tab">
+                            <h4>Simulateur de Plan Retraite</h4>
+                            <p>Estimez le capital nécessaire pour votre retraite et l'épargne mensuelle à prévoir.</p>
+
+                            <div class="mb-3">
+                                <label for="ageActuel" class="form-label">Votre âge actuel</label>
+                                <input type="range" class="form-range" min="18" max="60" step="1" id="ageActuel"
+                                    value="30">
+                                <div class="d-flex justify-content-between">
+                                    <span>18 ans</span>
+                                    <span id="ageActuelValue">30 ans</span>
+                                    <span>60 ans</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ageRetraite" class="form-label">Âge de la retraite souhaité</label>
+                                <input type="range" class="form-range" min="55" max="70" step="1" id="ageRetraite"
+                                    value="65">
+                                <div class="d-flex justify-content-between">
+                                    <span>55 ans</span>
+                                    <span id="ageRetraiteValue">65 ans</span>
+                                    <span>70 ans</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="depensesRetraite" class="form-label">Dépenses mensuelles souhaitées à la
+                                    retraite (CFA)</label>
+                                <input type="range" class="form-range" min="200000" max="1000000" step="10000"
+                                    id="depensesRetraite" value="400000">
+                                <div class="d-flex justify-content-between">
+                                    <span>200,000 CFA</span>
+                                    <span id="depensesRetraiteValue">400,000 CFA</span>
+                                    <span>1,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="capitalInitialRetraite" class="form-label">Capital déjà épargné (CFA)</label>
+                                <input type="range" class="form-range" min="0" max="20000000" step="100000"
+                                    id="capitalInitialRetraite" value="2000000">
+                                <div class="d-flex justify-content-between">
+                                    <span>0 CFA</span>
+                                    <span id="capitalInitialRetraiteValue">2,000,000 CFA</span>
+                                    <span>20,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="rendementRetraite" class="form-label">Rendement annuel estimé (%)</label>
+                                <input type="range" class="form-range" min="1" max="10" step="0.5"
+                                    id="rendementRetraite" value="5">
+                                <div class="d-flex justify-content-between">
+                                    <span>1%</span>
+                                    <span id="rendementRetraiteValue">5%</span>
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerRetraite" class="btn btn-primary">Calculer</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat du Plan Retraite</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatRetraite">Entrez les paramètres et cliquez sur "Calculer"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="inflation" role="tabpanel" aria-labelledby="inflation-tab">
+                            <h4>Simulateur d'Impact de l'Inflation</h4>
+                            <p>Voyez comment l'inflation affecte le pouvoir d'achat de votre argent au fil du temps.</p>
+
+                            <div class="mb-3">
+                                <label for="montantInflation" class="form-label">Montant actuel (CFA)</label>
+                                <input type="range" class="form-range" min="10000" max="20000000" step="10000"
+                                    id="montantInflation" value="200000">
+                                <div class="d-flex justify-content-between">
+                                    <span>10,000 CFA</span>
+                                    <span id="montantInflationValue">200,000 CFA</span>
+                                    <span>20,000,000 CFA</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tauxInflation" class="form-label">Taux d'inflation annuel (%)</label>
+                                <input type="range" class="form-range" min="0.5" max="10" step="0.1"
+                                    id="tauxInflation" value="2.5">
+                                <div class="d-flex justify-content-between">
+                                    <span>0.5%</span>
+                                    <span id="tauxInflationValue">2.5%</span>
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="anneesInflation" class="form-label">Nombre d'années</label>
+                                <input type="range" class="form-range" min="1" max="50" step="1" id="anneesInflation"
+                                    value="10">
+                                <div class="d-flex justify-content-between">
+                                    <span>1 an</span>
+                                    <span id="anneesInflationValue">10 ans</span>
+                                    <span>50 ans</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerInflation" class="btn btn-primary">Calculer</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat de l'Inflation</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatInflation">Entrez les paramètres et cliquez sur "Calculer"
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="tab-pane fade" id="fonds" role="tabpanel">
-                                <!-- Contenu similaire pour le simulateur de fonds d'urgence -->
+                        </div>
+
+                        <div class="tab-pane fade" id="epargne" role="tabpanel" aria-labelledby="epargne-tab">
+                            <h4>Simulateur d'Objectif d'Épargne</h4>
+                            <p>Définissez un objectif d'épargne et découvrez combien vous devez mettre de côté
+                                mensuellement.</p>
+
+                            <div class="mb-3">
+                                <label for="objectifEpargne" class="form-label">Objectif d'épargne (CFA)</label>
+                                <input type="range" class="form-range" min="100000" max="20000000" step="100000"
+                                    id="objectifEpargne" value="2000000">
+                                <div class="d-flex justify-content-between">
+                                    <span>100,000 CFA</span>
+                                    <span id="objectifEpargneValue">2,000,000 CFA</span>
+                                    <span>20,000,000 CFA</span>
+                                </div>
                             </div>
-                            
-                            <div class="tab-pane fade" id="budget" role="tabpanel">
-                                <!-- Contenu similaire pour le simulateur de budget -->
+
+                            <div class="mb-3">
+                                <label for="dureeEpargne" class="form-label">Durée pour atteindre l'objectif
+                                    (années)</label>
+                                <input type="range" class="form-range" min="1" max="20" step="1" id="dureeEpargne"
+                                    value="5">
+                                <div class="d-flex justify-content-between">
+                                    <span>1 an</span>
+                                    <span id="dureeEpargneValue">5 ans</span>
+                                    <span>20 ans</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="rendementEpargne" class="form-label">Rendement annuel estimé (%)</label>
+                                <input type="range" class="form-range" min="0.5" max="10" step="0.1"
+                                    id="rendementEpargne" value="2.5">
+                                <div class="d-flex justify-content-between">
+                                    <span>0.5%</span>
+                                    <span id="rendementEpargneValue">2.5%</span>
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <button id="calculerEpargne" class="btn btn-primary">Calculer Épargne Mensuelle</button>
+
+                            <div class="mt-4">
+                                <h5>Résultat de l'Objectif d'Épargne</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="resultatEpargne">Entrez les paramètres et cliquez sur "Calculer"</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Glossaire -->
     <section id="glossaire" class="py-5">
         <div class="container animate-on-scroll">
             <h2 class="text-center mb-5"><i class="fas fa-book text-primary me-2"></i> Glossaire Financier</h2>
-            
+
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
@@ -849,17 +1194,17 @@
                             <dl>
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Différence entre ce que vous possédez (actifs) et ce que vous devez (passifs)">Patrimoine net</dt>
                                 <dd>Vos actifs moins vos passifs.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Flux d'argent entrant et sortant">Cash-flow</dt>
                                 <dd>Mouvement d'argent entrant et sortant.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Argent mis de côté pour les imprévus">Fonds d'urgence</dt>
                                 <dd>Épargne pour couvrir 3-6 mois de dépenses.</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-header bg-success text-white">
@@ -869,17 +1214,17 @@
                             <dl>
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Intérêts gagnés sur les intérêts accumulés">Intérêts composés</dt>
                                 <dd>Intérêts sur le capital et les intérêts accumulés.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Fonds négocié en bourse qui suit un indice">ETF</dt>
                                 <dd>Fonds d'investissement négociable en bourse.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Plan d'Épargne en Actions">PEA</dt>
                                 <dd>Enveloppe fiscale avantageuse pour investir en actions.</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-header bg-warning text-dark">
@@ -889,10 +1234,10 @@
                             <dl>
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Répartition des investissements pour réduire le risque">Diversification</dt>
                                 <dd>Répartir ses investissements pour limiter le risque.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Société Civile Immobilière pour gérer un patrimoine">SCI</dt>
                                 <dd>Structure pour détenir et gérer des biens immobiliers.</dd>
-                                
+
                                 <dt class="glossary-term" data-bs-toggle="tooltip" title="Assurance pour protéger ses proches">Assurance-vie</dt>
                                 <dd>Contrat d'assurance avec composante d'épargne.</dd>
                             </dl>
@@ -903,37 +1248,164 @@
         </div>
     </section>
 
-    <!-- Checklist Personnelle -->
     <section id="checklist" class="py-5 bg-light">
         <div class="container animate-on-scroll">
             <h2 class="text-center mb-5"><i class="fas fa-check-square text-primary me-2"></i> Ma Checklist Financière</h2>
-            
+
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="card">
+                    <div class="card shadow-sm">
                         <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0">Suivez votre progression</h4>
+                            <h4 class="mb-0"><i class="fas fa-tasks me-2"></i> Suivez votre progression !</h4>
                         </div>
                         <div class="card-body">
-                            <div class="mb-4">
-                                <h5><i class="fas fa-hand-holding-usd me-2"></i> Gagner</h5>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="check1" class="form-check-input">
-                                    <label for="check1" class="form-check-label ms-2">Identifier mes compétences monnayables</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="check2" class="form-check-input">
-                                    <label for="check2" class="form-check-label ms-2">Développer une source de revenus secondaire</label>
-                                </div>
-                                <!-- Ajoutez d'autres éléments de checklist -->
+                            <div class="progress mb-4">
+                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="checklistProgressBar">0%</div>
                             </div>
-                            
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+
+                            <div class="accordion" id="checklistAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="fas fa-hand-holding-usd me-2"></i> 1. Gagner (Créer de la valeur)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#checklistAccordion">
+                                        <div class="accordion-body">
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGagner1" class="form-check-input checklist-checkbox">
+                                                <label for="checkGagner1" class="form-check-label">Évaluer mes compétences actuelles et identifier celles qui sont monnayables.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGagner2" class="form-check-input checklist-checkbox">
+                                                <label for="checkGagner2" class="form-check-label">Identifier au moins une source de revenus secondaire (freelance, vente en ligne, etc.).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGagner3" class="form-check-input checklist-checkbox">
+                                                <label for="checkGagner3" class="form-check-label">Développer un plan pour améliorer une compétence clé dans les 6 prochains mois.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGagner4" class="form-check-input checklist-checkbox">
+                                                <label for="checkGagner4" class="form-check-label">Négocier une augmentation de salaire ou revoir mes tarifs de services.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fas fa-tasks me-2"></i> 2. Gérer (Maîtriser les flux)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#checklistAccordion">
+                                        <div class="accordion-body">
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGerer1" class="form-check-input checklist-checkbox">
+                                                <label for="checkGerer1" class="form-check-label">Créer un budget mensuel et le suivre pendant 3 mois.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGerer2" class="form-check-input checklist-checkbox">
+                                                <label for="checkGerer2" class="form-check-label">Séparer mes comptes bancaires (dépenses courantes, épargne, investissement).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGerer3" class="form-check-input checklist-checkbox">
+                                                <label for="checkGerer3" class="form-check-label">Suivre toutes mes dépenses pendant un mois pour identifier les fuites.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGerer4" class="form-check-input checklist-checkbox">
+                                                <label for="checkGerer4" class="form-check-label">Mettre en place des virements automatiques pour l'épargne dès réception du revenu.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fas fa-shield-alt me-2"></i> 3. Garder (Construire une base solide)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#checklistAccordion">
+                                        <div class="accordion-body">
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGarder1" class="form-check-input checklist-checkbox">
+                                                <label for="checkGarder1" class="form-check-label">Constituer un fonds d'urgence équivalent à 3 à 6 mois de dépenses essentielles.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGarder2" class="form-check-input checklist-checkbox">
+                                                <label for="checkGarder2" class="form-check-label">Passer en revue mes assurances (santé, habitation, auto) et ajuster si nécessaire.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGarder3" class="form-check-input checklist-checkbox">
+                                                <label for="checkGarder3" class="form-check-label">Réduire ou éliminer toutes mes dettes à taux d'intérêt élevé (crédit conso, cartes).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkGarder4" class="form-check-input checklist-checkbox">
+                                                <label for="checkGarder4" class="form-check-label">Mettre à jour mon testament (si applicable) ou envisager d'en rédiger un.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <i class="fas fa-chart-line me-2"></i> 4. Multiplier (Faire croître son capital)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#checklistAccordion">
+                                        <div class="accordion-body">
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkMultiplier1" class="form-check-input checklist-checkbox">
+                                                <label for="checkMultiplier1" class="form-check-label">Me renseigner sur au moins 3 types d'investissements (immobilier, bourse, entreprises).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkMultiplier2" class="form-check-input checklist-checkbox">
+                                                <label for="checkMultiplier2" class="form-check-label">Ouvrir un compte d'investissement (PEA, compte-titres, assurance-vie).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkMultiplier3" class="form-check-input checklist-checkbox">
+                                                <label for="checkMultiplier3" class="form-check-label">Faire mon premier investissement selon une stratégie définie.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkMultiplier4" class="form-check-input checklist-checkbox">
+                                                <label for="checkMultiplier4" class="form-check-label">Automatiser mes investissements réguliers.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFive">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            <i class="fas fa-hands-helping me-2"></i> 5. Transmettre (Donner du sens durable)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#checklistAccordion">
+                                        <div class="accordion-body">
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkTransmettre1" class="form-check-input checklist-checkbox">
+                                                <label for="checkTransmettre1" class="form-check-label">Discuter de mes objectifs financiers et de patrimoine avec mes proches.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkTransmettre2" class="form-check-input checklist-checkbox">
+                                                <label for="checkTransmettre2" class="form-check-label">Prévoir un plan de succession simplifié (pour les biens importants).</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkTransmettre3" class="form-check-input checklist-checkbox">
+                                                <label for="checkTransmettre3" class="form-check-label">Éduquer un membre de ma famille ou un jeune sur les bases financières.</label>
+                                            </div>
+                                            <div class="checklist-item">
+                                                <input type="checkbox" id="checkTransmettre4" class="form-check-input checklist-checkbox">
+                                                <label for="checkTransmettre4" class="form-check-label">Envisager une contribution à une cause qui me tient à cœur.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <button class="btn btn-outline-primary mt-3">
-                                <i class="fas fa-download me-2"></i>Télécharger la checklist complète
+                            <button class="btn btn-outline-primary mt-4">
+                                <i class="fas fa-download me-2"></i> Télécharger la checklist complète (PDF)
                             </button>
                         </div>
                     </div>
@@ -942,7 +1414,6 @@
         </div>
     </section>
 
-    <!-- Conclusion -->
     <section class="py-5 bg-dark text-white">
         <div class="container text-center animate-on-scroll">
             <h2 class="mb-4">Stratégie, Résilience et Transmission</h2>
@@ -954,7 +1425,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-4 bg-light">
         <div class="container">
             <div class="row">
@@ -970,13 +1440,10 @@
         </div>
     </footer>
 
-    <!-- Floating Action Button -->
     <div class="floating-btn" data-bs-toggle="modal" data-bs-target="#quizModal">
         <i class="fas fa-question"></i>
     </div>
 
-    <!-- Modals -->
-    <!-- Modal Étape 1 -->
     <div class="modal fade" id="etape1Modal" tabindex="-1" aria-labelledby="etape1ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -990,10 +1457,10 @@
                         <li><strong>Julie</strong>, professeure, gagne 2× plus avec ses formations en ligne qu'en classe.</li>
                         <li><strong>Freelance IT</strong> qui travaille sur Upwork + développe son SaaS.</li>
                     </ul>
-                    
+
                     <h5 class="mt-4">REX (Retour d'Expérience) :</h5>
                     <p>80% des indépendants qui réussissent ont commencé en side-project.</p>
-                    
+
                     <h5 class="mt-4">Outils recommandés :</h5>
                     <div class="row">
                         <div class="col-md-6">
@@ -1029,9 +1496,6 @@
         </div>
     </div>
 
-    <!-- Ajoutez les modals pour les autres étapes (2 à 5) de la même manière -->
-
-    <!-- Modal Quiz -->
     <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -1058,8 +1522,7 @@
                                     <label class="form-check-label" for="quiz1Option3">Faire un budget</label>
                                 </div>
                             </div>
-                            <!-- Ajoutez d'autres questions -->
-                        </div>
+                            </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#quizCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Précédent</span>
@@ -1078,11 +1541,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Custom JS -->
     <script>
         // Animation on scroll
         function checkVisibility() {
@@ -1090,13 +1550,13 @@
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.2;
-                
+
                 if (elementPosition < screenPosition) {
                     element.classList.add('visible');
                 }
             });
         }
-        
+
         // Initialize tooltips
         function initTooltips() {
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -1104,76 +1564,79 @@
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
         }
-        
+
+        // Checklist Progress
+        function updateChecklistProgress() {
+            const checkboxes = document.querySelectorAll('.checklist-checkbox');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const totalCount = checkboxes.length;
+            const percentage = totalCount > 0 ? (checkedCount / totalCount) * 100 : 0;
+
+            const progressBar = document.getElementById('checklistProgressBar');
+            progressBar.style.width = percentage.toFixed(0) + '%';
+            progressBar.setAttribute('aria-valuenow', percentage.toFixed(0));
+            progressBar.textContent = percentage.toFixed(0) + '% Complété';
+        }
+
         // Simulation calculations
         function setupSimulations() {
-            // Update slider values
-            document.getElementById('montantInitial').addEventListener('input', function() {
-                document.getElementById('montantInitialValue').textContent = this.value + '€';
+            // Achat et revente de terrains sur 5 ans
+            document.getElementById('prixAchatTerrain').addEventListener('input', function() {
+                document.getElementById('prixAchatTerrainValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
             });
-            
-            document.getElementById('apportMensuel').addEventListener('input', function() {
-                document.getElementById('apportMensuelValue').textContent = this.value + '€';
+
+            document.getElementById('prixReventeTerrain').addEventListener('input', function() {
+                document.getElementById('prixReventeTerrainValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
             });
-            
-            document.getElementById('tauxRendement').addEventListener('input', function() {
-                document.getElementById('tauxRendementValue').textContent = this.value + '%';
+
+            document.getElementById('fraisTransaction').addEventListener('input', function() {
+                document.getElementById('fraisTransactionValue').textContent = this.value + '%';
             });
-            
-            document.getElementById('dureeInvestissement').addEventListener('input', function() {
-                document.getElementById('dureeInvestissementValue').textContent = this.value + ' ans';
-            });
-            
-            // Calculate compound interest
-            document.getElementById('calculerInterets').addEventListener('click', function() {
-                const initial = parseFloat(document.getElementById('montantInitial').value);
-                const monthly = parseFloat(document.getElementById('apportMensuel').value);
-                const rate = parseFloat(document.getElementById('tauxRendement').value) / 100;
-                const years = parseFloat(document.getElementById('dureeInvestissement').value);
-                
-                const months = years * 12;
-                let total = initial;
-                let monthlyData = [];
-                let labels = [];
-                
-                for (let i = 0; i <= months; i++) {
-                    if (i > 0) {
-                        total = total * (1 + rate/12) + monthly;
-                    }
-                    if (i % 12 === 0 || i === months) {
-                        monthlyData.push(total.toFixed(2));
-                        labels.push('Année ' + (i/12));
-                    }
-                }
-                
-                const totalInvested = initial + (monthly * months);
-                const interestEarned = total - totalInvested;
-                
-                document.getElementById('resultatInterets').innerHTML = `
-                    <p>Après ${years} ans, avec un investissement initial de ${initial}€ et des versements mensuels de ${monthly}€ à ${rate*100}% de rendement annuel :</p>
+
+            document.getElementById('calculerTerrains').addEventListener('click', function() {
+                const prixAchat = parseFloat(document.getElementById('prixAchatTerrain').value);
+                const prixRevente = parseFloat(document.getElementById('prixReventeTerrain').value);
+                const frais = parseFloat(document.getElementById('fraisTransaction').value) / 100;
+                const duree = 5; // Fixed for 5 years
+
+                const gainBrut = prixRevente - prixAchat;
+                const montantFrais = prixRevente * frais;
+                const gainNet = gainBrut - montantFrais;
+                const rendementAnnuel = (gainNet / prixAchat) / duree * 100;
+
+                document.getElementById('resultatTerrains').innerHTML = `
+                    <p>Pour un terrain acheté ${prixAchat.toLocaleString('fr-FR')} CFA et revendu ${prixRevente.toLocaleString('fr-FR')} CFA après ${duree} ans, avec ${frais*100}% de frais de transaction :</p>
                     <ul>
-                        <li><strong>Total investi :</strong> ${totalInvested.toFixed(2)}€</li>
-                        <li><strong>Intérêts gagnés :</strong> ${interestEarned.toFixed(2)}€</li>
-                        <li><strong>Valeur finale :</strong> ${total.toFixed(2)}€</li>
+                        <li><strong>Gain Brut :</strong> ${gainBrut.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Frais de transaction :</strong> ${montantFrais.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Gain Net :</strong> ${gainNet.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Rendement annuel moyen :</strong> ${rendementAnnuel.toFixed(2)}%</li>
                     </ul>
                 `;
-                
-                // Draw chart
+
+                // Draw chart for terrain investment
                 const ctx = document.createElement('canvas');
-                document.getElementById('graphiqueInterets').innerHTML = '';
-                document.getElementById('graphiqueInterets').appendChild(ctx);
-                
+                document.getElementById('graphiqueTerrains').innerHTML = '';
+                document.getElementById('graphiqueTerrains').appendChild(ctx);
+
                 new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
-                        labels: labels,
+                        labels: ['Prix Achat', 'Gain Net', 'Prix Revente'],
                         datasets: [{
-                            label: 'Valeur du portefeuille (€)',
-                            data: monthlyData,
-                            borderColor: 'rgb(52, 152, 219)',
-                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                            fill: true,
-                            tension: 0.1
+                            label: 'Montant (CFA)',
+                            data: [prixAchat, gainNet, prixRevente],
+                            backgroundColor: [
+                                'rgba(52, 152, 219, 0.6)', // Blue for Achat
+                                'rgba(46, 204, 113, 0.6)', // Green for Gain Net
+                                'rgba(155, 89, 182, 0.6)'  // Purple for Revente
+                            ],
+                            borderColor: [
+                                'rgb(52, 152, 219)',
+                                'rgb(46, 204, 113)',
+                                'rgb(155, 89, 182)'
+                            ],
+                            borderWidth: 1
                         }]
                     },
                     options: {
@@ -1181,12 +1644,12 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Croissance de votre investissement'
+                                text: 'Rentabilité de l\'investissement en terrain'
                             },
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
-                                        return context.dataset.label + ': ' + context.raw + '€';
+                                        return context.dataset.label + ': ' + parseInt(context.raw).toLocaleString('fr-FR') + ' CFA';
                                     }
                                 }
                             }
@@ -1196,7 +1659,7 @@
                                 beginAtZero: true,
                                 ticks: {
                                     callback: function(value) {
-                                        return value + '€';
+                                        return parseInt(value).toLocaleString('fr-FR') + ' CFA';
                                     }
                                 }
                             }
@@ -1204,14 +1667,290 @@
                     }
                 });
             });
+
+
+            // Update slider values for Fonds d'Urgence
+            document.getElementById('depensesMensuelles').addEventListener('input', function() {
+                document.getElementById('depensesMensuellesValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('moisCouverture').addEventListener('input', function() {
+                document.getElementById('moisCouvertureValue').textContent = this.value + ' mois';
+            });
+
+            document.getElementById('epargneMensuelleFonds').addEventListener('input', function() {
+                document.getElementById('epargneMensuelleFondsValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            // Calculate Fonds d'Urgence
+            document.getElementById('calculerFonds').addEventListener('click', function() {
+                const depenses = parseFloat(document.getElementById('depensesMensuelles').value);
+                const mois = parseFloat(document.getElementById('moisCouverture').value);
+                const epargneMensuelle = parseFloat(document.getElementById('epargneMensuelleFonds').value);
+
+                const objectifFonds = depenses * mois;
+                const tempsNecessaire = objectifFonds / epargneMensuelle; // in months
+
+                document.getElementById('resultatFonds').innerHTML = `
+                    <p>Avec des dépenses mensuelles de ${depenses.toLocaleString('fr-FR')} CFA et un objectif de ${mois} mois de couverture :</p>
+                    <ul>
+                        <li><strong>Montant idéal du fonds d'urgence :</strong> ${objectifFonds.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Temps estimé pour l'atteindre (si épargne mensuelle de ${epargneMensuelle.toLocaleString('fr-FR')} CFA) :</strong> ${tempsNecessaire.toFixed(1)} mois</li>
+                    </ul>
+                `;
+            });
+
+            // Update slider values for Budget 50/30/20
+            document.getElementById('revenuMensuel').addEventListener('input', function() {
+                document.getElementById('revenuMensuelValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            // Calculate Budget 50/30/20
+            document.getElementById('calculerBudget').addEventListener('click', function() {
+                const revenu = parseFloat(document.getElementById('revenuMensuel').value);
+
+                const besoins = revenu * 0.5;
+                const envies = revenu * 0.3;
+                const epargneDettes = revenu * 0.2;
+
+                document.getElementById('resultatBudget').innerHTML = `
+                    <p>Pour un revenu mensuel net de ${revenu.toLocaleString('fr-FR')} CFA, votre budget 50/30/20 se répartit comme suit :</p>
+                    <ul>
+                        <li><strong>Besoins (50%) :</strong> ${besoins.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Envies (30%) :</strong> ${envies.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Épargne/Remboursement Dettes (20%) :</strong> ${epargneDettes.toLocaleString('fr-FR')} CFA</li>
+                    </ul>
+                `;
+
+                // Draw chart for Budget
+                const ctx = document.createElement('canvas');
+                document.getElementById('graphiqueBudget').innerHTML = '';
+                document.getElementById('graphiqueBudget').appendChild(ctx);
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Besoins (50%)', 'Envies (30%)', 'Épargne/Dettes (20%)'],
+                        datasets: [{
+                            data: [besoins, envies, epargneDettes],
+                            backgroundColor: [
+                                'rgba(52, 152, 219, 0.6)', // Primary color for needs
+                                'rgba(231, 76, 60, 0.6)',  // Accent color for wants
+                                'rgba(46, 204, 113, 0.6)'  // Green for savings/debt
+                            ],
+                            borderColor: [
+                                'rgb(52, 152, 219)',
+                                'rgb(231, 76, 60)',
+                                'rgb(46, 204, 113)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Répartition du Budget 50/30/20'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += parseInt(context.raw).toLocaleString('fr-FR') + ' CFA';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Update slider values for Remboursement Crédit
+            document.getElementById('montantCredit').addEventListener('input', function() {
+                document.getElementById('montantCreditValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('tauxInteretCredit').addEventListener('input', function() {
+                document.getElementById('tauxInteretCreditValue').textContent = this.value + '%';
+            });
+
+            document.getElementById('dureeCredit').addEventListener('input', function() {
+                document.getElementById('dureeCreditValue').textContent = this.value + ' ans';
+            });
+
+            // Calculate Remboursement Crédit
+            document.getElementById('calculerCredit').addEventListener('click', function() {
+                const montant = parseFloat(document.getElementById('montantCredit').value);
+                const tauxAnnuel = parseFloat(document.getElementById('tauxInteretCredit').value) / 100;
+                const dureeAnnees = parseFloat(document.getElementById('dureeCredit').value);
+
+                const tauxMensuel = tauxAnnuel / 12;
+                const dureeMois = dureeAnnees * 12;
+
+                let mensualite = 0;
+                if (tauxMensuel === 0) {
+                    mensualite = montant / dureeMois;
+                } else {
+                    mensualite = (montant * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -dureeMois));
+                }
+                const coutTotal = mensualite * dureeMois;
+                const interetsTotaux = coutTotal - montant;
+
+                document.getElementById('resultatCredit').innerHTML = `
+                    <p>Pour un crédit de ${montant.toLocaleString('fr-FR')} CFA sur ${dureeAnnees} ans à un taux de ${tauxAnnuel*100}% :</p>
+                    <ul>
+                        <li><strong>Mensualité estimée :</strong> ${mensualite.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Coût total du crédit :</strong> ${coutTotal.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Intérêts totaux payés :</strong> ${interetsTotaux.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                    </ul>
+                `;
+            });
+
+            // Update slider values for Plan Retraite
+            document.getElementById('ageActuel').addEventListener('input', function() {
+                document.getElementById('ageActuelValue').textContent = this.value + ' ans';
+            });
+
+            document.getElementById('ageRetraite').addEventListener('input', function() {
+                document.getElementById('ageRetraiteValue').textContent = this.value + ' ans';
+            });
+
+            document.getElementById('depensesRetraite').addEventListener('input', function() {
+                document.getElementById('depensesRetraiteValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('capitalInitialRetraite').addEventListener('input', function() {
+                document.getElementById('capitalInitialRetraiteValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('rendementRetraite').addEventListener('input', function() {
+                document.getElementById('rendementRetraiteValue').textContent = this.value + '%';
+            });
+
+            // Calculate Plan Retraite
+            document.getElementById('calculerRetraite').addEventListener('click', function() {
+                const ageActuel = parseFloat(document.getElementById('ageActuel').value);
+                const ageRetraite = parseFloat(document.getElementById('ageRetraite').value);
+                const depensesRetraite = parseFloat(document.getElementById('depensesRetraite').value);
+                const capitalInitial = parseFloat(document.getElementById('capitalInitialRetraite').value);
+                const rendementAnnuel = parseFloat(document.getElementById('rendementRetraite').value) / 100;
+                const dureeAvantRetraite = ageRetraite - ageActuel;
+                const dureeRetraite = 25; // Assumption for life expectancy after retirement
+
+                const capitalNecessaireRetraite = depensesRetraite * 12 * dureeRetraite;
+                let capitalActuelProjete = capitalInitial * Math.pow(1 + rendementAnnuel, dureeAvantRetraite);
+                let besoinSupplementaire = capitalNecessaireRetraite - capitalActuelProjete;
+
+                let epargneMensuelleRequise = 0;
+                if (dureeAvantRetraite > 0 && besoinSupplementaire > 0) {
+                    const r = rendementAnnuel / 12;
+                    const n = dureeAvantRetraite * 12;
+                    epargneMensuelleRequise = (besoinSupplementaire * r) / (Math.pow(1 + r, n) - 1);
+                } else if (besoinSupplementaire <= 0) {
+                    epargneMensuelleRequise = 0; // Already have enough or more
+                } else {
+                    epargneMensuelleRequise = besoinSupplementaire / (dureeAvantRetraite * 12); // Simple division if no interest
+                }
+
+
+                document.getElementById('resultatRetraite').innerHTML = `
+                    <p>Pour atteindre votre objectif de retraite à ${ageRetraite} ans avec ${depensesRetraite.toLocaleString('fr-FR')} CFA de dépenses mensuelles, en partant de ${capitalInitial.toLocaleString('fr-FR')} CFA et un rendement de ${rendementAnnuel*100}% :</p>
+                    <ul>
+                        <li><strong>Capital nécessaire à la retraite :</strong> ${capitalNecessaireRetraite.toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Capital projeté actuel (sans nouvelle épargne) :</strong> ${capitalActuelProjete.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                        <li><strong>Épargne mensuelle requise :</strong> ${epargneMensuelleRequise.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                    </ul>
+                `;
+            });
+
+            // Update slider values for Impact Inflation
+            document.getElementById('montantInflation').addEventListener('input', function() {
+                document.getElementById('montantInflationValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('tauxInflation').addEventListener('input', function() {
+                document.getElementById('tauxInflationValue').textContent = this.value + '%';
+            });
+
+            document.getElementById('anneesInflation').addEventListener('input', function() {
+                document.getElementById('anneesInflationValue').textContent = this.value + ' ans';
+            });
+
+            // Calculate Impact Inflation
+            document.getElementById('calculerInflation').addEventListener('click', function() {
+                const montantInitial = parseFloat(document.getElementById('montantInflation').value);
+                const tauxInflation = parseFloat(document.getElementById('tauxInflation').value) / 100;
+                const annees = parseFloat(document.getElementById('anneesInflation').value);
+
+                const valeurFuture = montantInitial / Math.pow(1 + tauxInflation, annees);
+                const pertePouvoirAchat = montantInitial - valeurFuture;
+
+                document.getElementById('resultatInflation').innerHTML = `
+                    <p>Avec un taux d'inflation de ${tauxInflation*100}% par an, un montant de ${montantInitial.toLocaleString('fr-FR')} CFA aujourd'hui vaudra :</p>
+                    <ul>
+                        <li><strong>Après ${annees} ans :</strong> ${valeurFuture.toFixed(2).toLocaleString('fr-FR')} CFA (en pouvoir d'achat d'aujourd'hui)</li>
+                        <li><strong>Perte de pouvoir d'achat :</strong> ${pertePouvoirAchat.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                    </ul>
+                `;
+            });
+
+            // Update slider values for Objectif Épargne
+            document.getElementById('objectifEpargne').addEventListener('input', function() {
+                document.getElementById('objectifEpargneValue').textContent = parseInt(this.value).toLocaleString('fr-FR') + ' CFA';
+            });
+
+            document.getElementById('dureeEpargne').addEventListener('input', function() {
+                document.getElementById('dureeEpargneValue').textContent = this.value + ' ans';
+            });
+
+            document.getElementById('rendementEpargne').addEventListener('input', function() {
+                document.getElementById('rendementEpargneValue').textContent = this.value + '%';
+            });
+
+            // Calculate Objectif Épargne
+            document.getElementById('calculerEpargne').addEventListener('click', function() {
+                const objectif = parseFloat(document.getElementById('objectifEpargne').value);
+                const dureeAnnees = parseFloat(document.getElementById('dureeEpargne').value);
+                const rendementAnnuel = parseFloat(document.getElementById('rendementEpargne').value) / 100;
+
+                const dureeMois = dureeAnnees * 12;
+                const rendementMensuel = rendementAnnuel / 12;
+
+                let epargneMensuelle = 0;
+                if (rendementMensuel === 0) {
+                    epargneMensuelle = objectif / dureeMois;
+                } else {
+                    epargneMensuelle = (objectif * rendementMensuel) / (Math.pow(1 + rendementMensuel, dureeMois) - 1);
+                }
+
+                document.getElementById('resultatEpargne').innerHTML = `
+                    <p>Pour atteindre un objectif d'épargne de ${objectif.toLocaleString('fr-FR')} CFA en ${dureeAnnees} ans avec un rendement annuel de ${rendementAnnuel*100}% :</p>
+                    <ul>
+                        <li><strong>Vous devez épargner mensuellement :</strong> ${epargneMensuelle.toFixed(2).toLocaleString('fr-FR')} CFA</li>
+                    </ul>
+                `;
+            });
         }
-        
+
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             checkVisibility();
             initTooltips();
             setupSimulations();
-            
+
+            // Add event listeners for checklist checkboxes
+            const checklistCheckboxes = document.querySelectorAll('.checklist-checkbox');
+            checklistCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateChecklistProgress);
+            });
+            // Initial update
+            updateChecklistProgress();
+
             window.addEventListener('scroll', checkVisibility);
         });
     </script>
